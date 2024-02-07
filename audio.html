@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url(poppins.ttf);
+        }
+
+        * {
+            font-family: myFirstFont;
+        }
+
+        body {
+            background: -webkit-gradient(linear, left top, left bottom, from(#9999ff), to(#cc0099)) fixed;
+        }
+
+        .container {
+            display: flex;
+            height: 88vh;
+            width: 68vw;
+            background-color: rgb(9, 9, 9);
+            position: absolute;
+            top: 5vh;
+            left: 16vw;
+            border-radius: 10px;
+
+        }
+
+
+        #heading {
+            color: #F50057;
+            margin-left: 2vw;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        #track {
+            color: #F50057;
+            margin: 0 1.5vw;
+            padding: 0.5vw;
+        }
+
+        #by {
+            color: white;
+            margin: 0 1.5vw;
+            padding: 0.5vw;
+        }
+
+        #musicImage {
+            opacity: 0.5;
+            /* position: absolute; */
+            height: 45vh;
+            width: 30vw;
+            margin-left: 8vw;
+            margin-bottom: 0;
+        }
+
+        h3 {
+            color: white;
+            position: absolute;
+            left: 3vw;
+            top: 50vh;
+        }
+
+        #songName {
+            color: white;
+            position: absolute;
+            top: 55vh;
+            left: 3vw;
+        }
+
+        h4 {
+            color: #F50057;
+            position: absolute;
+            left: 3vw;
+            top: 64vh;
+        }
+
+        #music {
+            position: absolute;
+            top: 75vh;
+            left: 3vw;
+            width: 26vw;
+        }
+
+        .listItems {
+            /* background-color: rgb(8, 8, 8); */
+            /* width: 20vw; */
+            position: absolute;
+            left: 45vw;
+            top: 10vh;
+        }
+
+        #sd1,
+        #sd2,
+        #sd3 {
+            width: 18vw;
+        }
+
+        tr {
+            box-shadow: 0 4px 8px 0 rgba(220, 21, 147, 0.2);
+            padding: 15px;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        tr :hover {
+            background-color: #131725;
+        }
+
+
+        @media  screen and (max-width:1000px){
+            
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="audioLayout">
+            <h1 id="heading">Music Player</h1>
+
+            <img id="musicImage" src="cd-player.png">
+            <h3 id="title">Selected Music</h3>
+            <h1 id="songName">Memory</h1>
+            <h4 id="singerName">A song by Maroon</h4>
+
+            <audio controls class="audioControl" id="music" src="" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="listItems">
+            <h2>My Songs</h2>
+            <table>
+                <tr class="tableRow" onclick="changeSong('item1')">
+                    <td id="sd1">
+                        <p id="track">Memories</p>
+                        <p id="by">by Maroon 5</p>
+                    </td>
+                </tr>
+
+                <tr onclick="changeSong('item2')">
+                    <td id="sd2">
+                        <p id="track">Sound Track 1</p>
+                        <p id="by">by Sound Creator Beta</p>
+                    </td>
+                </tr>
+
+                <tr onclick="changeSong('item3')">
+                    <td id="sd3">
+                        <p id="track">Sound Track 2</p>
+
+                        <p id="by">by Sound Creator Alpha</p>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+
+    let link = document.getElementById("music");
+
+    let music_image = document.getElementById("musicImage");
+
+    var songName = document.getElementById("songName");
+
+    var singerName = document.getElementById("singerName");
+
+    var title = document.getElementById("title");
+
+
+    function changeSong(selectedItem) {
+
+        singerName.style.opacity = '0';
+        songName.style.opacity = '0'
+        title.style.opacity = '0'
+
+        if (selectedItem == "item1") {
+
+            link.src = "memories.mpeg";
+            music_image.src = "memories_img.png";
+            songName.innerHTML = "Track 1"
+            singerName.innerHTML = "A song by Maroon5"
+            singerName.style.opacity = '1';
+            songName.style.opacity = '1'
+            title.style.opacity = '1'
+            link.play();
+        }
+
+        if (selectedItem == "item2") {
+
+            link.src = "sdtrack1.mpeg";
+            music_image.src = "sdBg2.jpg";
+            songName.innerHTML = "Track 2"
+            singerName.innerHTML = "A song by Alpha"
+            singerName.style.opacity = '1';
+            songName.style.opacity = '1'
+            title.style.opacity = '1'
+            link.play();
+        }
+
+        if (selectedItem == "item3") {
+            link.src = "sdtrack2.mpeg";
+            music_image.src = "sdBg3.jpeg";
+            songName.innerHTML = "Track 3"
+            singerName.innerHTML = "A song by Beta"
+            singerName.style.opacity = '1';
+            songName.style.opacity = '1'
+            title.style.opacity = '1'
+            link.play();
+        }
+    }
+
+</script>
+
+</html>
